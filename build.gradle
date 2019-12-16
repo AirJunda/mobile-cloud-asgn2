@@ -23,6 +23,7 @@ targetCompatibility = 1.8
 war {
     baseName = 'gs-convert-jar-to-war'
     version =  '0.1.0'
+    mainClassName = 'org.magnum.mobilecloud.video.Application'
 }
 
 repositories {
@@ -63,10 +64,21 @@ dependencies {
     compile(":video.like.test:1.0.0")
     compile(":autograder.handin:1.0.0")
     compile(":autograder.spec:1.0.0")
+
+    compile("org.springframework.boot:spring-boot-starter-jdbc")
+
+    compile ("javax.xml.bind:jaxb-api:2.2.11")
+    compile ("com.sun.xml.bind:jaxb-core:2.2.11")
+    compile ("com.sun.xml.bind:jaxb-impl:2.2.11")
+    compile ("javax.activation:activation:1.1.1")
     
     testCompile("junit:junit")
 }
 
-task wrapper(type: Wrapper) {
+task wrapper2(type: Wrapper) {
     gradleVersion = '5.0'
+}
+
+run {
+    jvmArgs = ["-Dkeystore.file=src/main/resources/private/keystore", "-Dkeystore.pass=changeit"]
 }

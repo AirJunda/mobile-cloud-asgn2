@@ -126,4 +126,18 @@ public class Video {
 			return false;
 		}
 	}
+
+	public boolean alreadyLiked(String name) {
+		return likedBy.contains(name);
+	}
+
+	public void like(String name) {
+		likedBy.add(name);
+		likes++;
+	}
+
+	public void unlike(String name) {
+		likedBy.remove(name);
+		likes--;
+	}
 }
